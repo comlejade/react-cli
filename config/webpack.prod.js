@@ -9,7 +9,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 const getStyleLoader = (pre) => {
   return [
-    "style-loader",
+    MiniCssExtractPlugin.loader,
     "css-loader",
     {
       loader: "postcss-loader",
