@@ -1,1 +1,4 @@
-webpack5 react18 配置
+- webpack5
+- pnpm
+- react18
+- react-router

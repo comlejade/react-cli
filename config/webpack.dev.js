@@ -29,48 +29,52 @@ module.exports = {
   },
   module: {
     rules: [
-      // 处理css
       {
-        test: /\.css$/,
-        use: getStyleLoader(),
-      },
-      {
-        test: /\.s[ac]ss$/,
-        use: getStyleLoader("sass-loader"),
-      },
-      {
-        test: /\.less$/,
-        use: getStyleLoader("sass-loader"),
-      },
-      {
-        test: /\.styl$/,
-        use: getStyleLoader("stylus-loader"),
-      },
-      // 处理图片
-      {
-        test: /\.(jpe?g|png|gif|webp|svg)/,
-        type: "asset",
-        parser: {
-          dataUrlCondition: {
-            maxSize: 10 * 1024,
+        oneOf: [
+          // 处理css
+          {
+            test: /\.css$/,
+            use: getStyleLoader(),
           },
-        },
-      },
-      // 处理其他资源
-      {
-        test: /\.(woff2?|ttf)/,
-        type: "asset/resource",
-      },
-      // 处理js
-      {
-        test: /\.jsx?$/,
-        include: path.resolve(__dirname, "../src"),
-        loader: "babel-loader",
-        options: {
-          cacheDirectory: true,
-          cacheCompression: false,
-          plugins: ["react-refresh/babel"],
-        },
+          {
+            test: /\.s[ac]ss$/,
+            use: getStyleLoader("sass-loader"),
+          },
+          {
+            test: /\.less$/,
+            use: getStyleLoader("sass-loader"),
+          },
+          {
+            test: /\.styl$/,
+            use: getStyleLoader("stylus-loader"),
+          },
+          // 处理图片
+          {
+            test: /\.(jpe?g|png|gif|webp|svg)/,
+            type: "asset",
+            parser: {
+              dataUrlCondition: {
+                maxSize: 10 * 1024,
+              },
+            },
+          },
+          // 处理其他资源
+          {
+            test: /\.(woff2?|ttf)/,
+            type: "asset/resource",
+          },
+          // 处理js
+          {
+            test: /\.jsx?$/,
+            include: path.resolve(__dirname, "../src"),
+            loader: "babel-loader",
+            options: {
+              cacheDirectory: true,
+              cacheCompression: false,
+              plugins: ["react-refresh/babel"],
+            },
+          },
+        ],
       },
     ],
   },
